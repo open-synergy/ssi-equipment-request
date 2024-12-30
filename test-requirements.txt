@@ -30,3 +30,4 @@ odoo14-addon-ssi-stock-location-m2o-configurator-mixin
 odoo14-addon-ssi-stock-route-m2o-configurator-mixin
 odoo14-addon-ssi-stock-route-m2o-configurator-mixin
 odoo14-addon-ssi-stock-warehouse-m2o_configurator-mixin
+odoo14-addon-ssi-employee-document-mixin
