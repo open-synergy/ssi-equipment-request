@@ -20,6 +20,7 @@
         "ssi_transaction_cancel_mixin",
         "ssi_transaction_date_due_mixin",
         "ssi_product_line_price_mixin",
+        "ssi_employee_document_mixin",
         "base_automation",
         "ssi_product",
         "ssi_m2o_configurator_mixin",
