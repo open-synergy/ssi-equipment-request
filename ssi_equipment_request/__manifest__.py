@@ -4,7 +4,7 @@
 
 {
     "name": "Equipment Request",
-    "version": "14.0.2.0.0",
+    "version": "14.0.2.0.1",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
