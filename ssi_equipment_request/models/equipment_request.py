@@ -36,7 +36,7 @@ class EquipmentRequest(models.Model):
     _automatically_insert_done_policy_fields = False
     _automatically_insert_done_button = False
 
-    _statusbar_visible_label = "draft,confirm,ready,open,done"
+    _statusbar_visible_label = "draft,confirm,ready,open"
     _policy_field_order = [
         "confirm_ok",
         "ready_ok",
@@ -628,7 +628,7 @@ class EquipmentRequest(models.Model):
 
     @api.model
     def _get_policy_field(self):
-        res = super(EquipmentRequest, self)._get_policy_field()
+        res = super()._get_policy_field()
 
         policy_field = [
             "confirm_ok",
