@@ -643,7 +643,6 @@ class EquipmentRequest(models.Model):
             "manual_number_ok",
         ]
         res += policy_field
-        # raise UserError(str(res))
         return res
 
     @ssi_decorator.insert_on_form_view()
