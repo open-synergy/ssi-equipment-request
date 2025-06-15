@@ -14,6 +14,30 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
+#, python-format
+msgid ""
+"\n"
+"            Context: Create equipment request route\n"
+"            Database ID: %s\n"
+"            Problem: Warehouse does not have equipment in picking type\n"
+"            Solution: Create equipment in for said warehouse\n"
+"            "
+msgstr ""
+
+#. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
+#, python-format
+msgid ""
+"\n"
+"            Context: Create equipment request route\n"
+"            Database ID: %s\n"
+"            Problem: Warehouse does not have equipment out picking type\n"
+"            Solution: Create equipment out for said warehouse\n"
+"            "
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__name
 msgid "# Document"
 msgstr ""
@@ -103,26 +127,6 @@ msgid "All"
 msgstr ""
 
 #. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_inbound_location_ids
-msgid "Allowed Inbound Locations"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_inbound_warehouse_ids
-msgid "Allowed Inbound Warehouses"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_outbound_location_ids
-msgid "Allowed Outbound Locations"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_outbound_warehouse_ids
-msgid "Allowed Outbound Warehouses"
-msgstr ""
-
-#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_policy_template_ids
 msgid "Allowed Policy Templates"
 msgstr ""
@@ -140,11 +144,6 @@ msgstr ""
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_product_ids
 msgid "Allowed Products"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_route_ids
-msgid "Allowed Routes"
 msgstr ""
 
 #. module: ssi_equipment_request
@@ -196,7 +195,9 @@ msgid "Assign Policy"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
+#, python-format
 msgid "Assignment"
 msgstr ""
 
@@ -329,6 +330,11 @@ msgid "Create Assignment"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.hr_employee_view_form
+msgid "Create Equipment Request Route"
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
 msgid "Create Return"
 msgstr ""
@@ -393,8 +399,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_field__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_rule__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__display_name
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_hr_employee__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_move__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_rule__display_name
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_warehouse__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -412,6 +420,7 @@ msgid "Duration"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model,name:ssi_equipment_request.model_hr_employee
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__employee_id
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_tree
 msgid "Employee"
@@ -474,6 +483,11 @@ msgstr ""
 #: model:ir.model,name:ssi_equipment_request.model_equipment_request_policy_field
 #: model:res.groups,name:ssi_equipment_request.equipment_request_policy_field_group
 msgid "Equipment Request Policy Field"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_hr_employee__equipment_request_route_ids
+msgid "Equipment Request Routes"
 msgstr ""
 
 #. module: ssi_equipment_request
@@ -542,8 +556,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_field__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_rule__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__id
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_hr_employee__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_move__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_rule__id
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_warehouse__id
 msgid "ID"
 msgstr ""
 
@@ -589,61 +605,6 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__inbound_location_id
-msgid "Inbound Location"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_location_domain
-msgid "Inbound Location Domain"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_location_python_code
-msgid "Inbound Location Python Code"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_location_selection_method
-msgid "Inbound Location Selection Method"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_location_ids
-msgid "Inbound Locations"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__inbound_warehouse_id
-msgid "Inbound Warehouse"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_warehouse_domain
-msgid "Inbound Warehouse Domain"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_warehouse_python_code
-msgid "Inbound Warehouse Python Code"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_warehouse_selection_method
-msgid "Inbound Warehouse Selection Method"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__inbound_warehouse_ids
-msgid "Inbound Warehouses"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_type_view_form
-msgid "Inventory"
-msgstr ""
-
-#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__message_is_follower
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__message_is_follower
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy__message_is_follower
@@ -665,8 +626,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_field____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_rule____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type____last_update
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_hr_employee____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_move____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_rule____last_update
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_warehouse____last_update
 msgid "Last Modified on"
 msgstr ""
 
@@ -902,56 +865,6 @@ msgid "Operator"
 msgstr ""
 
 #. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__outbound_location_id
-msgid "Outbound Location"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_location_domain
-msgid "Outbound Location Domain"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_location_python_code
-msgid "Outbound Location Python Code"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_location_selection_method
-msgid "Outbound Location Selection Method"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_location_ids
-msgid "Outbound Locations"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__outbound_warehouse_id
-msgid "Outbound Warehouse"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_warehouse_domain
-msgid "Outbound Warehouse Domain"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_warehouse_python_code
-msgid "Outbound Warehouse Python Code"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_warehouse_selection_method
-msgid "Outbound Warehouse Selection Method"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__outbound_warehouse_ids
-msgid "Outbound Warehouses"
-msgstr ""
-
-#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__percent_assignment
 msgid "Percent Assignment"
 msgstr ""
@@ -1179,7 +1092,9 @@ msgid ""
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
+#, python-format
 msgid "Return"
 msgstr ""
 
@@ -1200,28 +1115,13 @@ msgid "Return Policy"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__reviewer_id
+msgid "Reviewer"
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__route_id
 msgid "Route"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__route_domain
-msgid "Route Domain"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__route_python_code
-msgid "Route Python Code"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__route_selection_method
-msgid "Route Selection Method"
-msgstr ""
-
-#. module: ssi_equipment_request
-#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__route_ids
-msgid "Routes"
 msgstr ""
 
 #. module: ssi_equipment_request
@@ -1393,6 +1293,14 @@ msgid ""
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,help:ssi_equipment_request.field_equipment_request__reviewer_id
+msgid ""
+"User that responsible to review document\n"
+"\n"
+"* Unless it configured to approve reviewer does not equal to approver"
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,help:ssi_equipment_request.field_equipment_request__active_approver_user_ids
 msgid "Users that can approve/reject document"
 msgstr ""
@@ -1405,6 +1313,12 @@ msgstr ""
 #. module: ssi_equipment_request
 #: model:res.groups,name:ssi_equipment_request.equipment_request_viewer_group
 msgid "Viewer"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:ir.model,name:ssi_equipment_request.model_stock_warehouse
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__warehouse_id
+msgid "Warehouse"
 msgstr ""
 
 #. module: ssi_equipment_request
