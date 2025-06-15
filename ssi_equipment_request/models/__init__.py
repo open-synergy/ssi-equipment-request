@@ -12,4 +12,6 @@ from . import (
     equipment_request_line,
     stock_rule,
     stock_move,
+    hr_employee,
+    stock_warehouse,
 )

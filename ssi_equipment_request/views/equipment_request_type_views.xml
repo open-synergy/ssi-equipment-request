@@ -36,8 +36,6 @@
             <xpath expr="//page[last()]" position="before">
                 <page name="product" string="Product">
                 </page>
-                <page name="inventory" string="Inventory">
-                </page>
             </xpath>
         </data>
     </field>
