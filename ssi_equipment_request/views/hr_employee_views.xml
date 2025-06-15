@@ -22,7 +22,12 @@
                     />
             </xpath>
             <xpath expr="//group[@name='inventory_1']" position="after">
-                <field name="equipment_request_route_ids" />
+                <field name="equipment_request_route_ids" readonly="1">
+                    <tree>
+                        <field name="warehouse_id" />
+                        <field name="route_id" />
+                    </tree>
+                </field>
             </xpath>
         </data>
     </field>

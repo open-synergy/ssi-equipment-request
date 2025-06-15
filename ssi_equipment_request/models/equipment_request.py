@@ -424,15 +424,15 @@ class EquipmentRequest(models.Model):
     )
     def onchange_route_id(self):
         self.route_id = False
-        Route = self.env["stock.location.route"]
+        Route = self.env["employee.equipment_request_route"]
         if self.employee_id and self.warehouse_id:
             criteria = [
-                ("id", "in", self.employee_id.equipment_request_route_ids.ids),
-                ("warehouse_ids", "=", self.warehouse_id.id),
+                ("employee_id", "=", self.employee_id.id),
+                ("warehouse_id", "=", self.warehouse_id.id),
             ]
             routes = Route.search(criteria)
             if len(routes) > 0:
-                self.route_id = routes[0]
+                self.route_id = routes[0].route_id
 
     @api.onchange(
         "type_id",
