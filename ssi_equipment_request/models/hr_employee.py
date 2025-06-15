@@ -9,12 +9,10 @@ from odoo import fields, models
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
-    equipment_request_route_ids = fields.Many2many(
+    equipment_request_route_ids = fields.One2many(
         string="Equipment Request Routes",
-        comodel_name="stock.location.route",
-        column1="employee_id",
-        column2="route_id",
-        relation="rel_employee_2_equipment_request_route",
+        comodel_name="employee.equipment_request_route",
+        inverse_name="employee_id",
     )
 
     def action_create_equipment_request_route(self):
@@ -26,13 +24,19 @@ class HrEmployee(models.Model):
         criteria = [
             ("company_id", "=", self.env.company.id),
         ]
-        route_ids = []
         Warehouse = self.env["stock.warehouse"]
+        Route = self.env["employee.equipment_request_route"]
         for warehouse in Warehouse.search(criteria):
-            route = warehouse._create_equipment_request_route(self)
-            route_ids.append(route.id)
-        self.write(
-            {
-                "equipment_request_route_ids": [(6, 0, route_ids)],
-            }
-        )
+            criteria = [
+                ("employee_id", "=", self.id),
+                ("warehouse_id", "=", warehouse.id),
+            ]
+            employee_routes = Route.search(criteria)
+            if len(employee_routes) == 0:
+                employee_route = Route.create(
+                    {
+                        "warehouse_id": warehouse.id,
+                        "employee_id": self.id,
+                    }
+                )
+                employee_route._create_route()

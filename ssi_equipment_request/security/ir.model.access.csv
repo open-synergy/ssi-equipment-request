@@ -15,3 +15,4 @@ access_equipment_request_user,equipment_request - user,model_equipment_request,e
 access_equipment_request_line_all,equipment_request_line - all,model_equipment_request_line,,1,0,0,0
 access_equipment_request_line_viewer,equipment_request_line - viewer,model_equipment_request_line,equipment_request_viewer_group,1,0,0,0
 access_equipment_request_line_user,equipment_request_line - user,model_equipment_request_line,equipment_request_user_group,1,1,1,1
+access_employee_equipment_request_route_all,employee.equipment_request_route - all,model_employee_equipment_request_route,,1,1,1,1

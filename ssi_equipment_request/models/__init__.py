@@ -13,5 +13,6 @@ from . import (
     stock_rule,
     stock_move,
     hr_employee,
+    employee_equipment_request_route,
     stock_warehouse,
 )

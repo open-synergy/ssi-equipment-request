@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from odoo import _, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
@@ -11,15 +11,11 @@ class StockWarehouse(models.Model):
     _name = "stock.warehouse"
     _inherit = ["stock.warehouse"]
 
-    def _create_equipment_request_route(self, employee):
-        self.ensure_one()
-
-        Route = self.env["stock.location.route"]
-        data = self._prepare_equipment_request_route(employee)
-        route = Route.create(data)
-        self._create_equipment_request_assignment_rule(employee, route)  # TODO:
-        self._create_equipment_request_return_rule(employee, route)  # TODO:
-        return route
+    equipment_request_route_ids = fields.One2many(
+        string="Equipment Request Routes",
+        comodel_name="employee.equipment_request_route",
+        inverse_name="warehouse_id",
+    )
 
     def _prepare_equipment_request_route(self, employee):
         self.ensure_one()
