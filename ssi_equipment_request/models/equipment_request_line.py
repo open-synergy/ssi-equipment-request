@@ -334,8 +334,8 @@ class EquipmentRequestLIne(models.Model):
     def _get_assignment_procurement_data(self):
         group = self.request_id.procurement_group_id
         origin = self.request_id.name
-        warehouse = self.request_id.outbound_warehouse_id
-        location = self.request_id.employee_id.address_id.equipment_location_id
+        warehouse = self.request_id.warehouse_id
+        location = self.request_id.employee_id.location_id
         route = self.request_id.route_id
         result = {
             "name": origin,
@@ -356,8 +356,8 @@ class EquipmentRequestLIne(models.Model):
     def _get_return_procurement_data(self):
         group = self.request_id.procurement_group_id
         origin = self.request_id.name
-        warehouse = self.request_id.inbound_warehouse_id
-        location = self.request_id.inbound_location_id
+        warehouse = self.request_id.warehouse_id
+        location = self.request_id.warehouse_id.lot_stock_id
         route = self.request_id.route_id
         result = {
             "name": origin,

@@ -96,15 +96,8 @@ class EquipmentRequest(models.Model):
         readonly=True,
         states={"ready": [("readonly", False), ("required", True)]},
     )
-    outbound_warehouse_id = fields.Many2one(
-        string="Outbound Warehouse",
-        comodel_name="stock.warehouse",
-        required=False,
-        readonly=True,
-        states={"ready": [("readonly", False), ("required", True)]},
-    )
-    inbound_warehouse_id = fields.Many2one(
-        string="Inbound Warehouse",
+    warehouse_id = fields.Many2one(
+        string="Warehouse",
         comodel_name="stock.warehouse",
         required=False,
         readonly=True,
@@ -113,20 +106,6 @@ class EquipmentRequest(models.Model):
     route_id = fields.Many2one(
         string="Route",
         comodel_name="stock.location.route",
-        required=False,
-        readonly=True,
-        states={"ready": [("readonly", False), ("required", True)]},
-    )
-    outbound_location_id = fields.Many2one(
-        string="Outbound Location",
-        comodel_name="stock.location",
-        required=False,
-        readonly=True,
-        states={"ready": [("readonly", False), ("required", True)]},
-    )
-    inbound_location_id = fields.Many2one(
-        string="Inbound Location",
-        comodel_name="stock.location",
         required=False,
         readonly=True,
         states={"ready": [("readonly", False), ("required", True)]},
@@ -142,41 +121,6 @@ class EquipmentRequest(models.Model):
         comodel_name="product.category",
         string="Allowed Product Category",
         compute="_compute_allowed_product_category_ids",
-        store=False,
-        compute_sudo=True,
-    )
-    allowed_inbound_warehouse_ids = fields.Many2many(
-        comodel_name="stock.warehouse",
-        string="Allowed Inbound Warehouses",
-        compute="_compute_allowed_inbound_warehouse_ids",
-        store=False,
-        compute_sudo=True,
-    )
-    allowed_route_ids = fields.Many2many(
-        comodel_name="stock.location.route",
-        string="Allowed Routes",
-        compute="_compute_allowed_route_ids",
-        store=False,
-        compute_sudo=True,
-    )
-    allowed_inbound_location_ids = fields.Many2many(
-        comodel_name="stock.location",
-        string="Allowed Inbound Locations",
-        compute="_compute_allowed_inbound_location_ids",
-        store=False,
-        compute_sudo=True,
-    )
-    allowed_outbound_warehouse_ids = fields.Many2many(
-        comodel_name="stock.warehouse",
-        string="Allowed Outbound Warehouses",
-        compute="_compute_allowed_outbound_warehouse_ids",
-        store=False,
-        compute_sudo=True,
-    )
-    allowed_outbound_location_ids = fields.Many2many(
-        comodel_name="stock.location",
-        string="Allowed Outbound Locations",
-        compute="_compute_allowed_outbound_location_ids",
         store=False,
         compute_sudo=True,
     )
@@ -466,119 +410,29 @@ class EquipmentRequest(models.Model):
                 )
             record.allowed_product_category_ids = result
 
-    @api.depends("type_id")
-    def _compute_allowed_inbound_warehouse_ids(self):
-        for record in self:
-            result = False
-            if record.type_id:
-                result = record._m2o_configurator_get_filter(
-                    object_name="stock.warehouse",
-                    method_selection=record.type_id.inbound_warehouse_selection_method,
-                    manual_recordset=record.type_id.inbound_warehouse_ids,
-                    domain=record.type_id.inbound_warehouse_domain,
-                    python_code=record.type_id.inbound_warehouse_python_code,
-                )
-            record.allowed_inbound_warehouse_ids = result
-
-    @api.depends("type_id", "inbound_warehouse_id")
-    def _compute_allowed_route_ids(self):
-        for record in self:
-            result = False
-            if record.type_id:
-                result = record._m2o_configurator_get_filter(
-                    object_name="stock.location.route",
-                    method_selection=record.type_id.route_selection_method,
-                    manual_recordset=record.type_id.route_ids,
-                    domain=record.type_id.route_domain,
-                    python_code=record.type_id.route_python_code,
-                )
-            record.allowed_route_ids = result
-
-    @api.depends("type_id", "inbound_warehouse_id")
-    def _compute_allowed_inbound_location_ids(self):
-        for record in self:
-            result = False
-            if record.type_id:
-                result = record._m2o_configurator_get_filter(
-                    object_name="stock.location",
-                    method_selection=record.type_id.inbound_location_selection_method,
-                    manual_recordset=record.type_id.inbound_location_ids,
-                    domain=record.type_id.inbound_location_domain,
-                    python_code=record.type_id.inbound_location_python_code,
-                )
-            record.allowed_inbound_location_ids = result
-
-    @api.depends("type_id")
-    def _compute_allowed_outbound_warehouse_ids(self):
-        for record in self:
-            result = False
-            if record.type_id:
-                result = record._m2o_configurator_get_filter(
-                    object_name="stock.warehouse",
-                    method_selection=record.type_id.outbound_warehouse_selection_method,
-                    manual_recordset=record.type_id.outbound_warehouse_ids,
-                    domain=record.type_id.outbound_warehouse_domain,
-                    python_code=record.type_id.outbound_warehouse_python_code,
-                )
-            record.allowed_outbound_warehouse_ids = result
-
-    @api.depends("type_id", "outbound_warehouse_id")
-    def _compute_allowed_outbound_route_ids(self):
-        for record in self:
-            result = False
-            if record.type_id:
-                result = record._m2o_configurator_get_filter(
-                    object_name="stock.location.route",
-                    method_selection=record.type_id.outbound_route_selection_method,
-                    manual_recordset=record.type_id.outbound_route_ids,
-                    domain=record.type_id.outbound_route_domain,
-                    python_code=record.type_id.outbound_route_python_code,
-                )
-            record.allowed_outbound_route_ids = result
-
-    @api.depends("type_id", "outbound_warehouse_id")
-    def _compute_allowed_outbound_location_ids(self):
-        for record in self:
-            result = False
-            if record.type_id:
-                result = record._m2o_configurator_get_filter(
-                    object_name="stock.location",
-                    method_selection=record.type_id.outbound_location_selection_method,
-                    manual_recordset=record.type_id.outbound_location_ids,
-                    domain=record.type_id.outbound_location_domain,
-                    python_code=record.type_id.outbound_location_python_code,
-                )
-            record.allowed_outbound_location_ids = result
-
     @api.onchange(
-        "type_id",
+        "employee_id",
     )
-    def onchange_outbound_warehouse_id(self):
-        self.outbound_warehouse_id = False
+    def onchange_warehouse_id(self):
+        self.warehouse_id = False
+        if self.employee_id:
+            self.warehouse_id = self.employee_id.current_warehouse_id
 
     @api.onchange(
-        "outbound_warehouse_id",
-    )
-    def onchange_outbound_location_id(self):
-        self.outbound_location_id = False
-
-    @api.onchange(
-        "type_id",
-    )
-    def onchange_inbound_warehouse_id(self):
-        self.inbound_warehouse_id = False
-
-    @api.onchange(
-        "inbound_warehouse_id",
-    )
-    def onchange_inbound_location_id(self):
-        self.inbound_location_id = False
-
-    @api.onchange(
-        "inbound_warehouse_id",
+        "employee_id",
+        "warehouse_id",
     )
     def onchange_route_id(self):
         self.route_id = False
+        Route = self.env["stock.location.route"]
+        if self.employee_id and self.warehouse_id:
+            criteria = [
+                ("id", "in", self.employee_id.equipment_request_route_ids.ids),
+                ("warehouse_ids", "=", self.warehouse_id.id),
+            ]
+            routes = Route.search(criteria)
+            if len(routes) > 0:
+                self.route_id = routes[0]
 
     @api.onchange(
         "type_id",

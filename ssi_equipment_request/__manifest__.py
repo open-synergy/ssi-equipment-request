@@ -27,6 +27,8 @@
         "ssi_stock_location_m2o_configurator_mixin",
         "ssi_stock_route_m2o_configurator_mixin",
         "ssi_stock_warehouse_m2o_configurator_mixin",
+        "ssi_hr_employee_stock",
+        "ssi_stock_equipment_operation",
     ],
     "data": [
         "security/ir_module_category_data.xml",
@@ -48,6 +50,7 @@
         "views/equipment_request_operation.xml",
         "views/equipment_request_type_views.xml",
         "views/equipment_request_views.xml",
+        "views/hr_employee_views.xml",
     ],
     "demo": [],
     "images": [],
