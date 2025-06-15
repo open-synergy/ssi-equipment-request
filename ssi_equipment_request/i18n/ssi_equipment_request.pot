@@ -14,6 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/employee_equipment_request_route.py:0
 #: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
 #, python-format
 msgid ""
@@ -26,6 +27,7 @@ msgid ""
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/employee_equipment_request_route.py:0
 #: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
 #, python-format
 msgid ""
@@ -195,6 +197,7 @@ msgid "Assign Policy"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/employee_equipment_request_route.py:0
 #: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
 #, python-format
@@ -340,6 +343,7 @@ msgid "Create Return"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__create_uid
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__create_uid
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__create_uid
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__create_uid
@@ -351,6 +355,7 @@ msgid "Created by"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__create_date
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__create_date
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__create_date
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__create_date
@@ -392,6 +397,7 @@ msgid "Details"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__display_name
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__display_name
@@ -421,9 +427,15 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model,name:ssi_equipment_request.model_hr_employee
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__employee_id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__employee_id
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_tree
 msgid "Employee"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:ir.model,name:ssi_equipment_request.model_employee_equipment_request_route
+msgid "Employee - Equipment Request Route"
 msgstr ""
 
 #. module: ssi_equipment_request
@@ -487,6 +499,7 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_hr_employee__equipment_request_route_ids
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_stock_warehouse__equipment_request_route_ids
 msgid "Equipment Request Routes"
 msgstr ""
 
@@ -549,6 +562,7 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__id
@@ -619,6 +633,7 @@ msgid "Job Position"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line____last_update
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation____last_update
@@ -634,6 +649,7 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__write_uid
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__write_uid
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__write_uid
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__write_uid
@@ -645,6 +661,7 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__write_date
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__write_date
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__write_date
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__write_date
@@ -1092,6 +1109,7 @@ msgid ""
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/employee_equipment_request_route.py:0
 #: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
 #, python-format
@@ -1120,6 +1138,7 @@ msgid "Reviewer"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__route_id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__route_id
 msgid "Route"
 msgstr ""
@@ -1317,6 +1336,7 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model,name:ssi_equipment_request.model_stock_warehouse
+#: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__warehouse_id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__warehouse_id
 msgid "Warehouse"
 msgstr ""
