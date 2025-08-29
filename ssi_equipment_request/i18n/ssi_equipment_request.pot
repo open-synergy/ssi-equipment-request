@@ -129,6 +129,11 @@ msgid "All"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:res.groups,name:ssi_equipment_request.equipment_request_all_subordinate_group
+msgid "All Subordinate"
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__allowed_policy_template_ids
 msgid "Allowed Policy Templates"
 msgstr ""
@@ -394,6 +399,11 @@ msgstr ""
 #. module: ssi_equipment_request
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
 msgid "Details"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:res.groups,name:ssi_equipment_request.equipment_request_direct_subordinate_group
+msgid "Direct Subordinate"
 msgstr ""
 
 #. module: ssi_equipment_request
