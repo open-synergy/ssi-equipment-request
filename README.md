@@ -18,7 +18,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[ssi_equipment_request](ssi_equipment_request/) | 14.0.4.0.0 |  | Equipment Request
+[ssi_equipment_request](ssi_equipment_request/) | 14.0.4.1.0 |  | Equipment Request
 
 [//]: # (end addons)
 
