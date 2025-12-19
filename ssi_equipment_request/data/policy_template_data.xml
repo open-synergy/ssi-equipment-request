@@ -3,7 +3,7 @@
      Copyright 2023 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-<data noupdate="0">
+<data noupdate="1">
 <record id="equipment_request_policy_template" model="policy.template">
     <field name="name">Standard</field>
     <field name="model_id" ref="model_equipment_request" />
@@ -141,7 +141,7 @@ if not document.approval_template_id:
     <field name="restrict_state" eval="1" />
     <field
                 name="state_ids"
-                search="[('field_id.model_id.model','=','equipment_request'),('value','in',['draft','open','done','terminate'])]"
+                search="[('field_id.model_id.model','=','equipment_request'),('value','in',['draft','open','done','terminate','ready'])]"
             />
     <field name="restrict_user" eval="1" />
     <field name="computation_method">use_group</field>
