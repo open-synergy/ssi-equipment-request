@@ -192,6 +192,11 @@ msgid "Assigment Complete"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:equipment_request_operation,name:ssi_equipment_request.equipment_request_operation_data2
+msgid "Assign"
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__assign_ok
 msgid "Assign Ok"
 msgstr ""
@@ -199,6 +204,16 @@ msgstr ""
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__assign_policy_id
 msgid "Assign Policy"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_operation,name:ssi_equipment_request.equipment_request_operation_data1
+msgid "Assign. Return"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_policy_field,name:ssi_equipment_request.equipment_request_field_assigned
+msgid "Assigned"
 msgstr ""
 
 #. module: ssi_equipment_request
@@ -221,6 +236,26 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy_field__message_attachment_count
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_type__message_attachment_count
 msgid "Attachment Count"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_policy,name:ssi_equipment_request.equipment_request_policy_assigned_returned
+msgid "Based on Assigned - Returned Quantities"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_policy,name:ssi_equipment_request.equipment_request_policy_ordered_assigned
+msgid "Based on Ordered - Assigned Quantities"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_policy,name:ssi_equipment_request.equipment_request_policy_ordered_returned
+msgid "Based on Ordered - Returned Quantities"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_policy,name:ssi_equipment_request.equipment_request_policy_returned_assigned
+msgid "Based on Returned - Assigned Quantities"
 msgstr ""
 
 #. module: ssi_equipment_request
@@ -892,6 +927,11 @@ msgid "Operator"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: model:equipment_request_policy_field,name:ssi_equipment_request.equipment_request_field_ordered
+msgid "Ordered"
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_line__percent_assignment
 msgid "Percent Assignment"
 msgstr ""
@@ -1121,6 +1161,7 @@ msgstr ""
 #. module: ssi_equipment_request
 #: code:addons/ssi_equipment_request/models/employee_equipment_request_route.py:0
 #: code:addons/ssi_equipment_request/models/stock_warehouse.py:0
+#: model:equipment_request_operation,name:ssi_equipment_request.equipment_request_operation_data3
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_form
 #, python-format
 msgid "Return"
@@ -1140,6 +1181,11 @@ msgstr ""
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_operation__return_policy_id
 msgid "Return Policy"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: model:equipment_request_policy_field,name:ssi_equipment_request.equipment_request_field_returned
+msgid "Returned"
 msgstr ""
 
 #. module: ssi_equipment_request
