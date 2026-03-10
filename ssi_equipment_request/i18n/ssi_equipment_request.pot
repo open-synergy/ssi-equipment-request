@@ -917,6 +917,12 @@ msgid "Operation"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/equipment_request.py:0
+#, python-format
+msgid "Operation must be set."
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.ui.menu,name:ssi_equipment_request.equipment_request_operation_menu
 msgid "Operations"
 msgstr ""
@@ -1200,6 +1206,12 @@ msgid "Route"
 msgstr ""
 
 #. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/equipment_request.py:0
+#, python-format
+msgid "Route must be set."
+msgstr ""
+
+#. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request_policy__rule_ids
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_policy_view_form
 msgid "Rules"
@@ -1395,6 +1407,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__warehouse_id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__warehouse_id
 msgid "Warehouse"
+msgstr ""
+
+#. module: ssi_equipment_request
+#: code:addons/ssi_equipment_request/models/equipment_request.py:0
+#, python-format
+msgid "Warehouse must be set."
 msgstr ""
 
 #. module: ssi_equipment_request
