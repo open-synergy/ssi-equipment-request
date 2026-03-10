@@ -2,7 +2,8 @@
 # Copyright 2023 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 from odoo.addons.ssi_decorator import ssi_decorator
 
@@ -94,21 +95,21 @@ class EquipmentRequest(models.Model):
         required=False,
         ondelete="restrict",
         readonly=True,
-        states={"ready": [("readonly", False), ("required", True)]},
+        states={"ready": [("readonly", False)]},
     )
     warehouse_id = fields.Many2one(
         string="Warehouse",
         comodel_name="stock.warehouse",
         required=False,
         readonly=True,
-        states={"ready": [("readonly", False), ("required", True)]},
+        states={"ready": [("readonly", False)]},
     )
     route_id = fields.Many2one(
         string="Route",
         comodel_name="stock.location.route",
         required=False,
         readonly=True,
-        states={"ready": [("readonly", False), ("required", True)]},
+        states={"ready": [("readonly", False)]},
     )
     allowed_product_ids = fields.Many2many(
         comodel_name="product.product",
@@ -504,3 +505,30 @@ class EquipmentRequest(models.Model):
         if self._automatically_insert_view_element:
             view_arch = self._reconfigure_statusbar_visible(view_arch)
         return view_arch
+
+    @api.constrains(
+        "operation_id",
+        "state",
+    )
+    def _check_operation_id(self):
+        for rec in self:
+            if rec.state == "open" and not rec.operation_id:
+                raise ValidationError(_("Operation must be set."))
+
+    @api.constrains(
+        "route_id",
+        "state",
+    )
+    def _check_route_id(self):
+        for rec in self:
+            if rec.state == "open" and not rec.route_id:
+                raise ValidationError(_("Route must be set."))
+
+    @api.constrains(
+        "warehouse_id",
+        "state",
+    )
+    def _check_warehouse_id(self):
+        for rec in self:
+            if rec.state == "open" and not rec.warehouse_id:
+                raise ValidationError(_("Warehouse must be set."))
