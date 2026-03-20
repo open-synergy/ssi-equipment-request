@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo14-addon-ssi_equipment_request',
+        'odoo14-addon-ssi_equipment_request_documenso_signing',
     ],
     classifiers=[
         'Programming Language :: Python',
