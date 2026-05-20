@@ -1,0 +1,360 @@
+scenarios:
+  - name: "Equipment Request - Full Workflow: draft to done"
+    steps:
+      - step: "Create equipment request type"
+        action: "create"
+        model: "equipment_request_type"
+        save_as: "er_type"
+        values:
+          name: "Test Equipment Request Type"
+          code: "TERT001"
+
+      - step: "Create employee"
+        action: "create"
+        model: "hr.employee"
+        save_as: "employee"
+        values:
+          name: "Test Employee ER"
+
+      - step: "Create operation (no assign/return policy)"
+        action: "create"
+        model: "equipment_request_operation"
+        save_as: "operation"
+        values:
+          name: "Test Operation ER"
+          code: "TOER001"
+
+      - step: "Get warehouse"
+        action: "search"
+        model: "stock.warehouse"
+        domain: []
+        save_as: "warehouse"
+        limit: 1
+
+      - step: "Get route"
+        action: "search"
+        model: "stock.location.route"
+        domain: []
+        save_as: "route"
+        limit: 1
+
+      - step: "Create equipment request"
+        action: "create"
+        model: "equipment_request"
+        save_as: "er"
+        as_user: "base.user_admin"
+        values:
+          date: "2025-01-15"
+          date_due: "2025-02-15"
+          type_id: "EVAL: registry['er_type'].id"
+          employee_id: "EVAL: registry['employee'].id"
+
+      - step: "Assert equipment request in draft"
+        action: "assert"
+        target: "er"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+      - step: "Confirm equipment request"
+        action: "call"
+        target: "er"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Approve equipment request"
+        action: "call"
+        target: "er"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "ready"
+
+      - step: "Invalidate cache after approval"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Set operation, warehouse, and route"
+        action: "write"
+        target: "er"
+        values:
+          operation_id: "EVAL: registry['operation'].id"
+          warehouse_id: "EVAL: registry['warehouse'].id"
+          route_id: "EVAL: registry['route'].id"
+
+      - step: "Invalidate cache after write"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Open equipment request"
+        action: "call"
+        target: "er"
+        method: "action_open"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Mark equipment request as done"
+        action: "call"
+        target: "er"
+        method: "action_done"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "done"
+
+  - name: "Equipment Request - Cancel from ready state"
+    steps:
+      - step: "Create equipment request type"
+        action: "create"
+        model: "equipment_request_type"
+        save_as: "er_type"
+        values:
+          name: "Test Type Cancel ER"
+          code: "TTCER001"
+
+      - step: "Create employee"
+        action: "create"
+        model: "hr.employee"
+        save_as: "employee"
+        values:
+          name: "Test Employee Cancel ER"
+
+      - step: "Create equipment request"
+        action: "create"
+        model: "equipment_request"
+        save_as: "er"
+        as_user: "base.user_admin"
+        values:
+          date: "2025-01-15"
+          date_due: "2025-02-15"
+          type_id: "EVAL: registry['er_type'].id"
+          employee_id: "EVAL: registry['employee'].id"
+
+      - step: "Confirm equipment request"
+        action: "call"
+        target: "er"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Approve equipment request"
+        action: "call"
+        target: "er"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "ready"
+
+      - step: "Invalidate cache after approval"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Cancel equipment request"
+        action: "call"
+        target: "er"
+        method: "action_cancel"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "cancel"
+
+  - name: "Equipment Request - Restart from confirm state"
+    steps:
+      - step: "Create equipment request type"
+        action: "create"
+        model: "equipment_request_type"
+        save_as: "er_type"
+        values:
+          name: "Test Type Restart ER"
+          code: "TTRER001"
+
+      - step: "Create employee"
+        action: "create"
+        model: "hr.employee"
+        save_as: "employee"
+        values:
+          name: "Test Employee Restart ER"
+
+      - step: "Create equipment request"
+        action: "create"
+        model: "equipment_request"
+        save_as: "er"
+        as_user: "base.user_admin"
+        values:
+          date: "2025-01-15"
+          date_due: "2025-02-15"
+          type_id: "EVAL: registry['er_type'].id"
+          employee_id: "EVAL: registry['employee'].id"
+
+      - step: "Confirm equipment request"
+        action: "call"
+        target: "er"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "confirm"
+
+      - step: "Restart to draft"
+        action: "call"
+        target: "er"
+        method: "action_restart"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+
+  - name: "Equipment Request - Terminate from open state"
+    steps:
+      - step: "Create equipment request type"
+        action: "create"
+        model: "equipment_request_type"
+        save_as: "er_type"
+        values:
+          name: "Test Type Terminate ER"
+          code: "TTTER001"
+
+      - step: "Create employee"
+        action: "create"
+        model: "hr.employee"
+        save_as: "employee"
+        values:
+          name: "Test Employee Terminate ER"
+
+      - step: "Create operation"
+        action: "create"
+        model: "equipment_request_operation"
+        save_as: "operation"
+        values:
+          name: "Test Operation Terminate"
+          code: "TOPTER001"
+
+      - step: "Get warehouse"
+        action: "search"
+        model: "stock.warehouse"
+        domain: []
+        save_as: "warehouse"
+        limit: 1
+
+      - step: "Get route"
+        action: "search"
+        model: "stock.location.route"
+        domain: []
+        save_as: "route"
+        limit: 1
+
+      - step: "Create equipment request"
+        action: "create"
+        model: "equipment_request"
+        save_as: "er"
+        as_user: "base.user_admin"
+        values:
+          date: "2025-01-15"
+          date_due: "2025-02-15"
+          type_id: "EVAL: registry['er_type'].id"
+          employee_id: "EVAL: registry['employee'].id"
+
+      - step: "Confirm equipment request"
+        action: "call"
+        target: "er"
+        method: "action_confirm"
+        as_user: "base.user_admin"
+
+      - step: "Invalidate cache after confirm"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Approve equipment request"
+        action: "call"
+        target: "er"
+        method: "action_approve_approval"
+        as_user: "base.user_admin"
+
+      - step: "Invalidate cache after approval"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Set operation, warehouse, and route"
+        action: "write"
+        target: "er"
+        values:
+          operation_id: "EVAL: registry['operation'].id"
+          warehouse_id: "EVAL: registry['warehouse'].id"
+          route_id: "EVAL: registry['route'].id"
+
+      - step: "Invalidate cache after write"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Open equipment request"
+        action: "call"
+        target: "er"
+        method: "action_open"
+        as_user: "base.user_admin"
+        asserts:
+          state:
+            type: "value"
+            expected: "open"
+
+      - step: "Invalidate cache after open"
+        action: "call"
+        target: "er"
+        method: "invalidate_cache"
+
+      - step: "Terminate equipment request"
+        action: "call"
+        target: "er"
+        method: "action_terminate"
+        as_user: "base.user_admin"
+        context:
+          bypass_policy_check: true
+        asserts:
+          state:
+            type: "value"
+            expected: "terminate"

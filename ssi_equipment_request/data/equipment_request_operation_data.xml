@@ -3,7 +3,7 @@
      Copyright 2023 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-<data>
+
 <record id="equipment_request_operation_data1" model="equipment_request_operation">
     <field name="name">Assign. Return</field>
     <field name="active" eval="1" />
@@ -26,5 +26,5 @@
     <field name="return_policy_id" ref="equipment_request_policy_ordered_returned" />
 </record>
 
-</data>
+
 </odoo>
