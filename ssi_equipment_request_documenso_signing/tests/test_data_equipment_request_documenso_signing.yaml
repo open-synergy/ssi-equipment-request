@@ -1,0 +1,39 @@
+scenarios:
+  - name: "Equipment Request - Documenso Signing: has signing fields"
+    steps:
+      - step: "Create equipment request type"
+        action: "create"
+        model: "equipment_request_type"
+        save_as: "er_type"
+        values:
+          name: "Test Type ER DS"
+          code: "TTERDS001"
+
+      - step: "Create employee"
+        action: "create"
+        model: "hr.employee"
+        save_as: "employee"
+        values:
+          name: "Test Employee ER DS"
+
+      - step: "Create equipment request"
+        action: "create"
+        model: "equipment_request"
+        save_as: "er"
+        as_user: "base.user_admin"
+        values:
+          date: "2025-01-15"
+          date_due: "2025-02-15"
+          type_id: "EVAL: registry['er_type'].id"
+          employee_id: "EVAL: registry['employee'].id"
+
+      - step: "Assert equipment request has documenso signing fields"
+        action: "assert"
+        target: "er"
+        asserts:
+          state:
+            type: "value"
+            expected: "draft"
+          signature_request_ids:
+            type: "value"
+            operator: "is_falsy"

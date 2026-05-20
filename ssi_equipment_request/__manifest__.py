@@ -7,6 +7,9 @@
     "version": "14.0.4.6.0",
     "website": "https://simetri-sinergi.id",
     "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
+    "contributors": [
+        "Andhitia Rama <andhitia.r@gmail.com>",
+    ],
     "license": "AGPL-3",
     "installable": True,
     "depends": [
