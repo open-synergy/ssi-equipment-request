@@ -43,7 +43,44 @@
         />
     <field name="mode">primary</field>
     <field name="arch" type="xml">
-        <data />
+        <data>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="employee_id" />
+                <field name="department_id" />
+                <field name="type_id" />
+                <field name="date" />
+                <field name="operation_id" />
+                <field name="warehouse_id" />
+            </xpath>
+            <xpath expr="//group[@name='group_by']" position="inside">
+                <filter
+                        name="grp_employee"
+                        string="Employee"
+                        context="{'group_by':'employee_id'}"
+                    />
+                <filter
+                        name="grp_department"
+                        string="Department"
+                        context="{'group_by':'department_id'}"
+                    />
+                <filter
+                        name="grp_type"
+                        string="Type"
+                        context="{'group_by':'type_id'}"
+                    />
+                <filter name="grp_date" string="Date" context="{'group_by':'date'}" />
+                <filter
+                        name="grp_operation"
+                        string="Operation"
+                        context="{'group_by':'operation_id'}"
+                    />
+                <filter
+                        name="grp_warehouse"
+                        string="Warehouse"
+                        context="{'group_by':'warehouse_id'}"
+                    />
+            </xpath>
+        </data>
     </field>
 </record>
 
