@@ -18,7 +18,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[ssi_equipment_request](ssi_equipment_request/) | 14.0.4.7.0 |  | Equipment Request
+[ssi_equipment_request](ssi_equipment_request/) | 14.0.4.8.0 |  | Equipment Request
 [ssi_equipment_request_documenso_signing](ssi_equipment_request_documenso_signing/) | 14.0.1.2.0 |  | Equipment Request - Documenso Signing Integration
 
 [//]: # (end addons)
