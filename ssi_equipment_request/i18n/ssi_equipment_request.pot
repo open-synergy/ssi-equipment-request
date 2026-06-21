@@ -413,6 +413,7 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__date
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_search
 msgid "Date"
 msgstr ""
 
@@ -423,6 +424,7 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__department_id
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_search
 msgid "Department"
 msgstr ""
 
@@ -474,6 +476,7 @@ msgstr ""
 #: model:ir.model,name:ssi_equipment_request.model_hr_employee
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__employee_id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__employee_id
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_search
 #: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_tree
 msgid "Employee"
 msgstr ""
@@ -913,6 +916,7 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__operation_id
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_search
 msgid "Operation"
 msgstr ""
 
@@ -1318,6 +1322,7 @@ msgstr ""
 
 #. module: ssi_equipment_request
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__type_id
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_search
 msgid "Type"
 msgstr ""
 
@@ -1406,6 +1411,7 @@ msgstr ""
 #: model:ir.model,name:ssi_equipment_request.model_stock_warehouse
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_employee_equipment_request_route__warehouse_id
 #: model:ir.model.fields,field_description:ssi_equipment_request.field_equipment_request__warehouse_id
+#: model_terms:ir.ui.view,arch_db:ssi_equipment_request.equipment_request_view_search
 msgid "Warehouse"
 msgstr ""
 
